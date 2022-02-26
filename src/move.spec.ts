@@ -68,4 +68,16 @@ describe('move', () => {
 
     expect(() => move(list, '2', '4')).toThrow('You cannot specify a file as the destination');
   });
+  it('throws error if cannot found destination or source', () => {
+    const list = [
+      {
+        id: '1',
+        name: 'Folder 1',
+        files: [{ id: '2', name: 'File 1' }],
+      },
+      { id: '3', name: 'Folder 2', files: [{ id: '4', name: 'File 2' }] },
+    ];
+
+    expect(() => move(list, '9', '8')).toThrow('Cannot found destination or source');
+  });
 });
